@@ -53,6 +53,7 @@ const JsonFileUploader = () => {
         const formattedArea = {
           id: area.id,
           label: area[language] ? area[language] : area.label,
+          [language]: area[language],
         };
         json.areas.push(formattedArea);
       });
@@ -64,7 +65,8 @@ const JsonFileUploader = () => {
           id: category.id,
           label: category[language] ? category[language] : category.label,
           parent: category.parent,
-          content_category: category[contentCategoryLanguage],
+          contentCategoryLanguage: category[contentCategoryLanguage],
+          [language]: category[language],
         };
         json.categories.push(formattedCategory);
       });
