@@ -65,7 +65,7 @@ const JsonFileUploader = () => {
           id: category.id,
           label: category[language] ? category[language] : category.label,
           parent: category.parent,
-          contentCategoryLanguage: category[contentCategoryLanguage],
+          [contentCategoryLanguage]: category[contentCategoryLanguage],
           [language]: category[language],
         };
         json.categories.push(formattedCategory);
