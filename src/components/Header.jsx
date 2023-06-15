@@ -1,22 +1,39 @@
-import { AppBar, Toolbar, Typography, Box, Avatar } from '@mui/material';
-
+import { AppBar, Toolbar, Typography, Box, Link } from '@mui/material';
+import Logo from '../assets/Fisher.jpg';
 const Header = () => {
   return (
     <div>
       <AppBar
         position="fixed"
-        sx={{ bgcolor: 'white', color: '#005DA9', width: '100%' }}>
+        style={{ width: '100%' }}
+        sx={{ background: '#005DAA' }}>
         <Toolbar>
           <Box sx={{ flexGrow: 1, display: 'flex', alignItems: 'center' }}>
-            <img
-              alt="Logo"
-              src="https://www.fishersci.co.uk/content/dam/fishersci/en_US/images/fisher-scientific-logo-2017.svg" // replace with your logo URL
-              style={{ width: 100, height: 90, marginRight: '1rem' }}
-            />
+            <Link
+              href="https://www.fishersci.co.uk/gb/en/home.html"
+              underline="none">
+              <img
+                alt="Logo"
+                src={Logo} // replace with your logo URL
+                style={{
+                  width: 170,
+                  height: 80,
+                  marginRight: 2,
+                  color: '#FFF',
+                }}
+              />
+            </Link>
           </Box>
-          <Typography variant="h5" component="div" sx={{ flexGrow: 1 }}>
-            Thermo Fisher scientific
-          </Typography>
+          <Link
+            href="https://www.fishersci.co.uk/gb/en/home.html"
+            underline="none">
+            <Typography
+              variant="h6"
+              component="div"
+              sx={{ flexGrow: 1, color: '#FFF' }}>
+              Thermo Fisher Scientific
+            </Typography>
+          </Link>
           <Box sx={{ flexGrow: 1 }} />
         </Toolbar>
       </AppBar>

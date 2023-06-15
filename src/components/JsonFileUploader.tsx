@@ -131,23 +131,39 @@ const JsonFileUploader = () => {
 
   return (
     <div>
-      <input
-        type="file"
-        onChange={handleFileUpload}
-        style={{ padding: '10px' }}
-      />
-      {data.map((item: any, index: number) => (
-        <Card key={index} sx={{ mb: 10 }}>
-          <CardContent>
-            <Typography variant="h5">JSON {languages[index]}</Typography>
-          </CardContent>
-          <CardActions sx={{ justifyContent: 'center' }}>
-            <Box
-              sx={{
-                alignContent: 'center',
-                display: 'flex',
-                p: 3,
-              }}>
+      {!data.length ? (
+        <>
+          <Typography variant="h5" sx={{ mt: 10 }}>
+            This application will help to optimize the loading of promotions by
+            splitting the JSON file into 4 languages.
+          </Typography>
+          <Box sx={{ mt: 2 }}>
+            <Typography variant="h5" sx={{ color: '#005DAA' }}>
+              Upload JSON file
+            </Typography>
+            <input
+              type="file"
+              onChange={handleFileUpload}
+              style={{ padding: '10px' }}
+            />
+          </Box>
+        </>
+      ) : undefined}
+
+      {data.length ? (
+        <>
+          <Typography variant="h5" sx={{ mt: 10 }}>
+            Your file has been processed successfully. You can download the 4
+            JSON files.
+          </Typography>
+          <Card sx={{ mb: 5, mt: 5 }}>
+            <CardContent>
+              <Typography variant="h5" sx={{ color: '#005DAA' }}>
+                Download JSON files in French, English, German and Spanish
+                languages
+              </Typography>
+            </CardContent>
+            <CardActions sx={{ justifyContent: 'center' }}>
               <Button
                 variant="contained"
                 color="primary"
@@ -159,33 +175,30 @@ const JsonFileUploader = () => {
                   animation: `${animateColor} 2s linear infinite`,
                   '&:hover': {
                     backgroundColor: '#fff', // white background on hover
-                    color: 'blue', // blue text on hover
+                    color: '#005DAA', // blue text on hover
                   },
                 }}>
                 Download
               </Button>
-            </Box>
-          </CardActions>
-        </Card>
-      ))}
-      {data.length ? (
-        <>
+            </CardActions>
+          </Card>
           <Card sx={{ mb: 10 }}>
             <CardContent>
-              <Typography variant="h5">All JSON files </Typography>
+              <Typography variant="h5" sx={{ color: '#005DAA' }}>
+                Upload a new JSON file for a new campaign
+              </Typography>
             </CardContent>
-            <CardActions>
-              <Box
-                sx={{
-                  justifyContent: 'center',
-                  alignContent: 'center',
-                  display: 'flex',
-                  p: 3,
-                }}>
+            <Box
+              sx={{
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+              }}>
+              <CardActions>
                 <Button
                   variant="contained"
                   color="primary"
-                  onClick={downloadAllFiles}
+                  onClick={(e) => setData([])}
                   sx={{
                     borderColor: 'red',
                     borderWidth: 2,
@@ -193,13 +206,13 @@ const JsonFileUploader = () => {
                     animation: `${animateColor} 2s linear infinite`,
                     '&:hover': {
                       backgroundColor: '#fff', // white background on hover
-                      color: 'blue', // blue text on hover
+                      color: '#005DAA', // blue text on hover
                     },
                   }}>
-                  Download All JSON Files
+                  Upload
                 </Button>
-              </Box>
-            </CardActions>
+              </CardActions>
+            </Box>
           </Card>
         </>
       ) : undefined}
