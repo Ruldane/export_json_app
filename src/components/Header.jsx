@@ -5,7 +5,7 @@ const Header = () => {
     <div>
       <AppBar
         position="fixed"
-        sx={{ bgcolor: 'white', color: 'blue', width: '100%' }}>
+        sx={{ bgcolor: 'white', color: '#005DA9', width: '100%' }}>
         <Toolbar>
           <Box sx={{ flexGrow: 1, display: 'flex', alignItems: 'center' }}>
             <img
@@ -14,7 +14,7 @@ const Header = () => {
               style={{ width: 100, height: 90, marginRight: '1rem' }}
             />
           </Box>
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+          <Typography variant="h5" component="div" sx={{ flexGrow: 1 }}>
             Thermo Fisher scientific
           </Typography>
           <Box sx={{ flexGrow: 1 }} />
