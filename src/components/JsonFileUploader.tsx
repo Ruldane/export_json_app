@@ -155,7 +155,7 @@ const JsonFileUploader = () => {
         <>
           <Typography variant="h5" sx={{ mt: 10 }}>
             This application will help to optimize the loading of promotions by
-            splitting the JSON file into 4 languages.
+            splitting the JSON file into 5 languages.
           </Typography>
           <Box sx={{ mt: 2 }}>
             <Typography variant="h5" sx={{ color: '#005DAA' }}>
@@ -173,7 +173,7 @@ const JsonFileUploader = () => {
       {data.length ? (
         <>
           <Typography variant="h5" sx={{ mt: 10 }}>
-            Your file has been processed successfully. You can download the 4
+            Your file has been processed successfully. You can download the 5
             JSON files.
           </Typography>
           <Card sx={{ mb: 5, mt: 5 }}>
