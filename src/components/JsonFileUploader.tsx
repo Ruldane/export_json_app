@@ -7,7 +7,7 @@ import CardContent from '@mui/material/CardContent';
 import { keyframes } from '@mui/system';
 import { Typography, Box } from '@mui/material';
 
-const languages = ['fr', 'en', 'de', 'es'];
+const languages = ['fr', 'en', 'de', 'es', 'it'];
 
 // Define the keyframes for the border color animation
 const animateColor = keyframes`
@@ -52,27 +52,42 @@ const JsonFileUploader = () => {
       dataGlobal.areas.forEach((area: any) => {
         const formattedArea = {
           id: area.id,
-          label: area[language] ? area[language] : area.label,
-          [language]: area[language],
+          label: area[language === 'it' ? 'en' : language]
+            ? area[language === 'it' ? 'en' : language]
+            : area.label,
+          [language]: area[language === 'it' ? 'en' : language],
         };
         json.areas.push(formattedArea);
       });
 
       dataGlobal.categories.forEach((category: any) => {
-        const contentCategoryLanguage =
-          'content_category_' + language.toUpperCase();
+        let contentCategoryLanguage: string = '';
+        if (language === 'it') {
+          contentCategoryLanguage = 'content_category_EN';
+        } else {
+          contentCategoryLanguage =
+            'content_category_' + language.toUpperCase();
+        }
         const formattedCategory = {
           id: category.id,
-          label: category[language] ? category[language] : category.label,
+          label: category[language === 'it' ? 'en' : language]
+            ? category[language === 'it' ? 'en' : language]
+            : category.label,
           parent: category.parent,
-          [contentCategoryLanguage]: category[contentCategoryLanguage],
-          [language]: category[language],
+          [language === 'it' ? 'content_category_IT' : contentCategoryLanguage]:
+            category[contentCategoryLanguage],
+          [language]: category[language === 'it' ? 'en' : language],
         };
         json.categories.push(formattedCategory);
       });
 
       dataGlobal.products.forEach((product: any) => {
-        const imageLanguage = 'image_' + language.toUpperCase();
+        let imageLanguage: string = '';
+        if (language === 'it') {
+          imageLanguage = 'image_EN';
+        } else {
+          imageLanguage = 'image_' + language.toUpperCase();
+        }
         const formattedProduct = {
           id: product.id,
           link_type: product.link_type,
@@ -87,23 +102,26 @@ const JsonFileUploader = () => {
           [imageLanguage]: product[imageLanguage],
           image: product.image,
           supplier: product.supplier,
-          [language + '_teaser']: product[language]._teaser
+          [language + '_teaser']: product[language === 'it' ? 'en' : language]
+            ._teaser
             ? product[language]._teaser
             : product.en_teaser,
-          [language + '_bullet']: product[language].bullet
-            ? product[language].bullet
+          [language + '_bullet']: product[language === 'it' ? 'en' : language]
+            .bullet
+            ? product[language === 'it' ? 'en' : language].bullet
             : product.bullet,
           countries: product.countries,
           categories: product.categories,
           areas: product.areas,
           url: product.url,
           [language]: {
-            title: product[language].title,
+            title: product[language === 'it' ? 'en' : language].title,
             offer: product.offer,
-            bullet: product[language].bullet,
-            teaser: product[language].teaser,
-            tableTitle: product[language].tableTitle,
-            tableContent: product[language].tableContent,
+            bullet: product[language === 'it' ? 'en' : language].bullet,
+            teaser: product[language === 'it' ? 'en' : language].teaser,
+            tableTitle: product[language === 'it' ? 'en' : language].tableTitle,
+            tableContent:
+              product[language === 'it' ? 'en' : language].tableContent,
           },
           discounts: product.discounts,
         };
@@ -161,8 +179,8 @@ const JsonFileUploader = () => {
           <Card sx={{ mb: 5, mt: 5 }}>
             <CardContent>
               <Typography variant="h5" sx={{ color: '#005DAA' }}>
-                Download JSON files in French, English, German and Spanish
-                languages
+                Download JSON files in French, English, German, Spanish and
+                Italian languages
               </Typography>
             </CardContent>
             <CardActions sx={{ justifyContent: 'center' }}>
